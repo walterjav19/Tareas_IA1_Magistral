@@ -47,21 +47,22 @@ function allStatesVisited() {
 }
 
 function exterAgent(randomState, previousA, previousB) {
-  states[1] = stat[randomState].A;
-  states[2] = stat[randomState].B;
+  //METHOD ONE cleaning and dirtying the states
+  // states[1] = stat[randomState].A;
+  // states[2] = stat[randomState].B;
+
+  // Probabilidad del 50% de ensuciar A o B
+  if (Math.random() < 0.5) states[1] = "DIRTY"; 
+  if (Math.random() < 0.5) states[2] = "DIRTY"; 
 
   // Informar sobre los cambios en A y B
   if (previousA !== states[1]) {
-    document.getElementById("log").innerHTML += `<br><strong>A cambió de ${previousA} a ${states[1]} debido al agente externo.</strong>`;
-  } else {
-    document.getElementById("log").innerHTML += `<br><strong>A permaneció ${states[1]}. No hubo influencia del agente externo.</strong>`;
-  }
+    document.getElementById("log").innerHTML += `<br><strong>A change ${previousA} to ${states[1]} because a extern agent</strong>`;
+  } 
 
   if (previousB !== states[2]) {
-    document.getElementById("log").innerHTML += `<br><strong>B cambió de ${previousB} a ${states[2]} debido al agente externo.</strong>`;
-  } else {
-    document.getElementById("log").innerHTML += `<br><strong>B permaneció ${states[2]}. No hubo influencia del agente externo.</strong>`;
-  }
+    document.getElementById("log").innerHTML += `<br><strong>B change ${previousB} to ${states[2]} because extern agent</strong>`;
+  } 
 }
 
 function test(states) {
